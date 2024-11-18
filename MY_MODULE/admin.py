@@ -1,8 +1,8 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from DB.custumer_data import MyHotelDataList
-from EDITED_TEXT import text as my_text
+from MY_MODULE.custumer_data import MyHotelDataList
+from MY_MODULE import text as my_text
 
 class Admin_class:
     # Room properties
@@ -28,7 +28,7 @@ class Admin_class:
         
         return self.available_rooms, self.occupied_rooms, self.advance_rooms
     def passConfirmation(self):
-        EnterPass=(input(my_text.colored_text('To isi baat pe **PASSWORD** btao phir---',"yellow")))
+        EnterPass = input(my_text.colored_text('Please enter your password to proceed:', "yellow"))
         return EnterPass
     def greeting(self):
         print(my_text.colored_text(my_text.heading(f"Welcome Administrator {self.admin_name}"), "yellow"))

@@ -1,7 +1,7 @@
-from DB.custumer_data import MyHotelDataList
-from EDITED_TEXT import text as my_text
-from CLASS.admin import Admin_class, hotel_owner
-from CLASS.customer import Customer_class
+from MY_MODULE.custumer_data import MyHotelDataList
+from MY_MODULE import text as my_text
+from MY_MODULE.admin import hotel_owner
+from MY_MODULE.customer import customer
 
 # ----------------------------------------------------------------------------------------------------
 
@@ -19,29 +19,28 @@ def run_hotel_room_system():
         hotel_owner.passConfirmation()
         hotel_owner.greeting()
         hotel_owner.optionForself()
-        result = hotel_owner.optarationAfterChoosing()
+        result = hotel_owner.optarationAfterChoosing() #option for owner already written🍵
         if result == "RESET":
             run_hotel_room_system()
-        print('done')
+        print('done Owner')
     elif(who.casefold() != hotel_owner.admin_name.casefold() ) :
-        Customer_class.Customer_gre()
-            # checking with loop **if cust already exist**
+        customer.Customer_greeting()
         for i in range(0,len(MyHotelDataList)):
+            # checking with loop **if cust already exist**
             if( MyHotelDataList[i]['Name'].casefold() == who.casefold() ):
-                print('\nAS I can check from my data that...')
-                print('YOU__ARE__ALREADY__AN__EXISTING__CUSTOMER:)\br')
-                print('______[**HERE__ARE__YOUR__DETAILS**]______ :')
-                print('Your **NAME** is                                                                  : {}'.format(MyHotelDataList[i]['Name']))
-                print('     **AGE** is                                                                   : {}'.format(MyHotelDataList[i]['Age']))
-                print('     **CONTACT-no.** is                                                           : {}'.format(MyHotelDataList[i]['phone']))
-                print('And  **ROOM_STATUS** is                                                           : {}\n'.format(MyHotelDataList[i]['Room Status']))
-                print('\nHow Can I help You {} Sir'.format(MyHotelDataList[i]['Name']))
-        Customer_class.optionForCustomer()
-        Customer_class.optarationAfterChoosing()
-        print(MyHotelDataList)
+                print(my_text.colored_text('Existing Customer Details:', 'yellow'))
+                print(my_text.colored_text('Name:', 'blue') + my_text.colored_text(MyHotelDataList[i]['Name'], 'magenta'))
+                print(my_text.colored_text('Age:', 'blue') + my_text.colored_text(MyHotelDataList[i]['Age'], 'magenta'))
+                print(my_text.colored_text('Contact:', 'blue') + my_text.colored_text(MyHotelDataList[i]['phone'], 'magenta'))
+                print(my_text.colored_text('Room Status:', 'blue') + my_text.colored_text(MyHotelDataList[i]['Room Status'], 'magenta'))
+                print(my_text.colored_text('How can I assist you, ', 'yellow') + my_text.colored_text(MyHotelDataList[i]['Name'], 'magenta') + '?')
+        customer.show_customer_options()
+        customer.choose_option()
+        customer.process_option()
+        print(my_text.colored_bg_text(MyHotelDataList, "white"))
     else:
-        print('Aneesh Grover ki aavaaj me ...**Kya kr rah h tu**')  
-        print('----------------------------Select Again-----------------------')
+        print(my_text.colored_text("Invalid input detected. Please try again.", "red"))
+        print(my_text.colored_bg_text(my_text.heading("Please select a valid option"), "blue"))
     
     
 run_hotel_room_system()
