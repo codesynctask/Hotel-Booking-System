@@ -19,7 +19,7 @@ def run_hotel_room_system():
         hotel_owner.passConfirmation()
         hotel_owner.greeting()
         hotel_owner.optionForself()
-        result = hotel_owner.optarationAfterChoosing() #option for owner already written🍵
+        result = hotel_owner.optarationAfterChoosing() 
         if result == "RESET":
             run_hotel_room_system()
         print('done Owner')
@@ -35,7 +35,7 @@ def run_hotel_room_system():
                 print(my_text.colored_text('Room Status:', 'blue') + my_text.colored_text(MyHotelDataList[i]['Room Status'], 'magenta'))
                 print(my_text.colored_text('How can I assist you, ', 'yellow') + my_text.colored_text(MyHotelDataList[i]['Name'], 'magenta') + '?')
         customer.show_customer_options()
-        customer.choose_option()
+        # customer.choose_option()
         customer.process_option()
         print(my_text.colored_bg_text(MyHotelDataList, "white"))
     else:
