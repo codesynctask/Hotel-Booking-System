@@ -1,5 +1,5 @@
 # HOTEL ROOM MANAGEMENT SYSTEM
-
+ADMIN Name = "deepak" and password logiic is not setted, so every pass is accepted
 ## 1. Introduction
 ![Hotel Room Management System](./image/snap_shot.gif)
 
